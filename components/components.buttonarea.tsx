@@ -1,30 +1,29 @@
 import React from 'react'
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native'
 import ButtonCircle from './components.buttoncircle';
+import { BUTTON_STATE } from '../define/define.key';
 
-export default function ButtonArea() {
-    //Method
-    const onClickLap = () => {
-        console.log('On click lap');
-    }
+interface IProps {
+    onClickLap: Function,
+    onClickStartStop: Function,
+    laps: number[],
+    isRunning: boolean
+}
 
-    const onClickStart = () => {
-        console.log('On click start');
-    }
-
+export default function ButtonArea({ onClickLap, onClickStartStop, laps, isRunning }: IProps) {
     return (
         <View
             style={styles.contain}
         >
             <ButtonCircle
-                title={'Lap'}
+                title={!isRunning && laps.length ? 'Reset' : 'Lap'}
                 handleFunc={onClickLap}
-                buttonState='normal'
+                buttonState={!isRunning && !laps.length ? BUTTON_STATE.DISABLE : BUTTON_STATE.NORMAL}
             />
             <ButtonCircle
-                title={'Start'}
-                handleFunc={onClickStart}
-                buttonState='success'
+                title={isRunning ? 'Stop' : 'Start'}
+                handleFunc={onClickStartStop}
+                buttonState={isRunning ? BUTTON_STATE.DANGER : BUTTON_STATE.SUCCESS}
             />
         </View>
     )

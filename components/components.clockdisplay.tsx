@@ -1,10 +1,34 @@
 import React from "react"
 import { View, Text, StyleSheet } from "react-native"
+import { CLOCK } from "../define/define.fontSize"
+import { timeFormat } from "../utils/utils.string"
 
-export default function ClockDisplay() {
+interface IProps {
+    time: number
+}
+
+export default function ClockDisplay({ time }: IProps) {
+    let arr = timeFormat(time).split(':');
+
     return (
         <View style={styles.contain}>
-            <Text style={styles.text}>00:00.00</Text>
+            <View style={styles.time}>
+                <View style={styles.number}>
+                    <Text style={styles.text}>{arr[0]}</Text>
+                </View>
+                <View style={styles.symbol}>
+                    <Text style={styles.text}>:</Text>
+                </View>
+                <View style={styles.number}>
+                    <Text style={styles.text}>{arr[1]}</Text>
+                </View>
+                <View style={styles.symbol}>
+                    <Text style={styles.text}>.</Text>
+                </View>
+                <View style={styles.number}>
+                    <Text style={styles.text}>{arr[2]}</Text>
+                </View>
+            </View>
         </View>
     )
 }
@@ -15,9 +39,20 @@ const styles = StyleSheet.create({
         justifyContent: 'center',
         alignItems: 'center'
     },
+    time: {
+        flexDirection: 'row',
+    },
     text: {
         color: '#fff',
         fontWeight: '200',
-        fontSize: 90,
+        fontSize: CLOCK,
     },
+    number: {
+        flex: 0.3,
+        alignItems: 'center',
+    },
+    symbol: {
+        flex: 0.05,
+        alignItems: 'center',
+    }
 })

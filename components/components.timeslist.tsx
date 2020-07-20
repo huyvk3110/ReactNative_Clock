@@ -1,5 +1,7 @@
 import React from "react";
 import { StyleSheet, FlatList, View, Text } from "react-native";
+import { CONTENT } from "../define/define.fontSize";
+import { timeFormat } from "../utils/utils.string";
 
 /* INTERFACE */
 interface IProps {
@@ -7,25 +9,31 @@ interface IProps {
 }
 
 interface IItemProps {
-    index: number,
-    time: number,
+    lap?: number,
+    time?: number,
 }
 
-function TimeListItem({ time, index }: IItemProps) {
+function TimeListItem({ time, lap }: IItemProps) {
     return (
         <View style={styles.item}>
-            <Text style={styles.text}>{`Lap ${index.toString()}`}</Text>
-            <Text style={styles.text}>{time.toString()}</Text>
+            <Text style={styles.text}>{typeof lap == 'number' ? `Lap ${lap.toString()}` : ''}</Text>
+            <Text style={styles.text}>{typeof time == 'number' ? timeFormat(time) : ''}</Text>
         </View>
     )
 }
 
 export default function TimeList({ data }: IProps) {
+    //Add lap
+    let handledData: IItemProps[] = data.map((o, i) => ({ time: o, lap: i + 1 }));
+    //Check list data length
+    handledData = Array(handledData.length < 8 ? 8 - handledData.length : 0).fill('').concat(handledData)
+
+    //Render
     return (
         <View style={styles.contain}>
             <FlatList
-                data={data.map((o, i) => Object.assign(o, { key: i })).reverse()}
-                renderItem={({ item }) => (<TimeListItem time={item} index={item.key} />)}
+                data={handledData.map((o, i) => Object.assign(o, { key: i })).reverse()}
+                renderItem={({ item }) => (<TimeListItem time={item.time} lap={item.lap} />)}
                 keyExtractor={o => o.key.toString()}
             />
         </View>
@@ -35,6 +43,7 @@ export default function TimeList({ data }: IProps) {
 const styles = StyleSheet.create({
     contain: {
         width: '100%',
+        maxHeight: 300
     },
     item: {
         padding: 8,
@@ -42,9 +51,10 @@ const styles = StyleSheet.create({
         justifyContent: 'space-between',
         borderTopColor: 'rgba(255,255,255,0.1)',
         borderTopWidth: 0.3,
+        minHeight: 40
     },
     text: {
-        fontSize: 20,
+        fontSize: CONTENT,
         color: '#fff'
     }
 })

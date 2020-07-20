@@ -1,10 +1,13 @@
 import React from "react";
 import { TouchableOpacity, StyleSheet, View, Text } from "react-native";
+import { TEXT, BACKGROUND } from "../define/define.color";
+import { BUTTON } from "../define/define.fontSize";
+import { BUTTON_STATE } from "../define/define.key";
 
 interface IProps {
     title: string,
     handleFunc: Function,
-    buttonState: 'normal' | 'success' | 'danger',
+    buttonState: BUTTON_STATE,
 }
 
 export default function ButtonCircle({ handleFunc, buttonState, title }: IProps) {
@@ -27,27 +30,30 @@ const SIZE = 95;
 /* StyleSheet */
 //-Color
 const colorsText = StyleSheet.create({
-    normal: { color: 'rgb(152,152,158)' },
-    success: { color: 'rgb(102,203,102)' },
-    danger: { color: 'rgb(228,81,67)' },
+    disable: { color: TEXT.DISABLE },
+    normal: { color: TEXT.NORMAL },
+    success: { color: TEXT.SUCCESS },
+    danger: { color: TEXT.DANGER },
 })
 
 const colorsButton = StyleSheet.create({
-    normal: { backgroundColor: 'rgb(28,28,30)' },
-    success: { backgroundColor: 'rgb(19,41,20)' },
-    danger: { backgroundColor: 'rgb(47,16,14)' },
+    disable: { backgroundColor: BACKGROUND.DISABLE },
+    normal: { backgroundColor: BACKGROUND.NORMAL },
+    success: { backgroundColor: BACKGROUND.SUCCESS },
+    danger: { backgroundColor: BACKGROUND.DANGER },
 })
 
 const colorsBorder = StyleSheet.create({
-    normal: { borderColor: 'rgb(28,28,30)' },
-    success: { borderColor: 'rgb(19,41,20)' },
-    danger: { borderColor: 'rgb(47,16,14)' },
+    disable: { borderColor: BACKGROUND.DISABLE },
+    normal: { borderColor: BACKGROUND.NORMAL },
+    success: { borderColor: BACKGROUND.SUCCESS },
+    danger: { borderColor: BACKGROUND.DANGER },
 })
 
 //-Style
 const styles = StyleSheet.create({
     title: {
-        fontSize: 22,
+        fontSize: BUTTON,
     },
     button: {
         height: SIZE,
