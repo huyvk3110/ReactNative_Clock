@@ -98,8 +98,6 @@ export default class StopWatch extends Component<IProp, IState> {
     render() {
         const { laps, isRunning, timeEnd, timeStart } = this.state;
 
-        console.log(timeStart, timeEnd)
-
         return (
             <View style={styles.container}>
                 <View

@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import { StyleSheet, View } from 'react-native';
+import { StyleSheet, View, StatusBar } from 'react-native';
 import StopWatch from './views/views.stopwatch';
 
 export default class App extends Component {
   render() {
     return (
       <View style={styles.container}>
-        <StopWatch/>
+        <StatusBar
+          barStyle='light-content'
+        />
+        <StopWatch />
       </View>
     );
   }
