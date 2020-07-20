@@ -11,12 +11,13 @@ export default function ClockDisplay() {
 
 const styles = StyleSheet.create({
     contain: {
-        flex: 0.5,
+        flex: 1,
         justifyContent: 'center',
+        alignItems: 'center'
     },
     text: {
         color: '#fff',
         fontWeight: '200',
-        fontSize: 90
+        fontSize: 90,
     },
 })

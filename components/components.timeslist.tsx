@@ -34,7 +34,6 @@ export default function TimeList({ data }: IProps) {
 
 const styles = StyleSheet.create({
     contain: {
-        flex: 0.23,
         width: '100%',
     },
     item: {
