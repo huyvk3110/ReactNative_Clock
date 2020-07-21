@@ -1,5 +1,5 @@
 import React from "react";
-import { StyleSheet, FlatList, View, Text } from "react-native";
+import { StyleSheet, FlatList, View, Text, PixelRatio } from "react-native";
 import { CONTENT } from "../define/define.fontSize";
 import { timeFormat } from "../utils/utils.string";
 
@@ -43,7 +43,7 @@ export default function TimeList({ data }: IProps) {
 const styles = StyleSheet.create({
     contain: {
         width: '100%',
-        maxHeight: 300
+        height: 320/PixelRatio.get(),
     },
     item: {
         padding: 8,

@@ -17,7 +17,7 @@
       "**/*"
     ],
     "ios": {
-      "supportsTablet": true
+      "bundleIdentifier": "com.huyvk3110.rn-clock"
     },
     "web": {
       "favicon": "./assets/favicon.png"

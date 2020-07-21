@@ -1,5 +1,5 @@
 import React from "react"
-import { View, Text, StyleSheet } from "react-native"
+import { View, Text, StyleSheet, PixelRatio } from "react-native"
 import { CLOCK } from "../define/define.fontSize"
 import { timeFormat } from "../utils/utils.string"
 

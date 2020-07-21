@@ -120,12 +120,12 @@ const styles = StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'space-between',
+        padding: 15,
     },
     topLayout: {
-        flex: 0.5,
+        flex: 1,
     },
     botLayout: {
-        flex: 0.5,
         justifyContent: 'flex-end',
     },
 });
